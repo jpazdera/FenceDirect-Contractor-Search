@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<title>FenceDirect Contractor Search</title>
+		<link rel="stylesheet" type="text/css" href="css.css">
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script type="text/javascript" src="contractor_info.js"></script>
+		<script type="text/javascript" src="file_saver.js"></script>
+		<script type="text/javascript" src="data_modifiers.js"></script>
+	</head>
+	<body>
+		<a href="index.html"><h1>FenceDirect Contractor Search</h1></a>
+		<h2>Add Contractor</h2>
+		<h3>Enter new contractor info below:</h3>
+		<form id="adder">
+			Company: <input id="name" type="text" name="code" /><br><br>
+			Address: <input id="address" type="text" name="code" /><br><br>
+			City: <input id="city" type="text" name="code" /><br><br>
+			State: <input id="state" type="text" name="code" /><br><br>
+			Zip: <input id="zip" type="text" name="code" /><br><br>
+			Phone #: <input id="phone" type="text" name="code" /><br><br>
+			Email: <input id="email" type="text" name="code" /><br><br>
+			Contact: <input id="contact" type="text" name="code" /><br><br>
+			Last Use (Mmm-YY): <input id="last" type="text" name="code" /><br><br>
+			<input type="button" value="Enter" onclick="addContractor();">
+		</form>
+		<br><br>
+		<div align="center"><a href="#" onclick="saveUpdates(CONTRACTOR_INFO);return false;" class="button">Save Changes</a></div>
+	</body>
+</html>

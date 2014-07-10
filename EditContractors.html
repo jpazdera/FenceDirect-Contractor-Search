@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<title>FenceDirect Contractor Search</title>
+		<link rel="stylesheet" type="text/css" href="css.css">
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script type="text/javascript" src="jquery.cookie.js"></script>
+		<script type="text/javascript" src="contractor_info.js"></script>
+		<script type="text/javascript" src="file_saver.js"></script>
+		<script type="text/javascript" src="data_modifiers.js"></script>
+		<script type="text/javascript" src="list_contractors.js"></script>
+	</head>
+	<body>
+		<a href="index.html"><h1>FenceDirect Contractor Search</h1></a>
+		<h2>Edit Contractors</h2>
+		<h5>Note: You can press Ctrl + F to quckly search for the desired entry or entries.</h5>
+		<h3>Select which contractor(s) you wish to edit:</h3>
+		<div id="contractors" class="list">
+			<script type="text/javascript">
+				populateList();
+			</script>
+		</div><br>
+		<button id="submit">Submit</button>
+		
+		<script type="text/javascript">
+			//CODE BELOW IS MODIFIED FROM STACKOVERFLOW USER Jonas G. Drange
+			var d=document;
+			var submitButton = d.getElementById('submit');
+			var contractors = d.getElementById('contractors');
+			submitButton.onclick = function () {
+    			var response_array = inputsToArray(contractors.children);
+    			response_array = response_array.join('**');
+    			jQuery.cookie('toEdit', response_array);
+    			location.replace('EditContractors2.html');
+			};
+		</script>
+	</body>
+</html>

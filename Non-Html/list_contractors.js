@@ -1,4 +1,4 @@
-function populateList() {
+function populateList() { //generates a list of all contractors' names and zip codes, while printing a checkbox list of all their names
 	var zip;
 	var i;
 	var name;

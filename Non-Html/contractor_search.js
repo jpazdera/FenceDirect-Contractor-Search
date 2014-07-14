@@ -1,4 +1,4 @@
-function contractorSearch(zip, radius) {
+function contractorSearch(zip, radius) { //uses API to get a list of zip codes near the customer's location, parses the response, and finds contractors within those zip codes
 	var link = "https://zipcodedistanceapi.redline13.com/rest/uu4eHJIQw6guvFrQFKjIxZknBmMELWBgqFu7ocYVjeqOUSFzCYhaYCxzYkeJgPZG/radius.json/" + zip + "/" + radius + "/mile";
 	var data;
 	var contractors;
@@ -6,10 +6,9 @@ function contractorSearch(zip, radius) {
 		data = d.responseText;
 		if (data != "") {
 			data = trimResponse(data);
-			data = extractZips(data);
+			data = extractZips(data, zip);
 			data = findZipsWithContractors(data);
 			contractors = getContractors(data);
-			logContractors(contractors);
 			outputResults(zip, contractors);
 		} else {
 			alert("ERROR: Invalid zip code.");
@@ -20,7 +19,7 @@ function contractorSearch(zip, radius) {
 }
 
 
-function trimResponse(data) {
+function trimResponse(data) { //extracts JSON data from the response
 	var start_i = data.indexOf("{");
 	var end_i = data.search("</p>");
 	data = data.substring(start_i, end_i);
@@ -29,9 +28,9 @@ function trimResponse(data) {
 }
 
 
-function extractZips(obj) {
+function extractZips(obj, zip) { //converts the JSON data into an array of (zip, distance) tuples
 	var l = obj["zip_codes"];
-	var zips = [];
+	var zips = [[zip, 0]]; //add the customer's zip code to the list, as the API does not include it
 	var entry;
 	for (var i=0; i< l.length; i++) {
 		entry = [l[i]["zip_code"], l[i]["distance"]];
@@ -41,7 +40,7 @@ function extractZips(obj) {
 }
 
 
-function findZipsWithContractors(zips) {
+function findZipsWithContractors(zips) { //determines which nearby zips have contractors listed
 	var zips_w_con = [];
 	for (var i=0; i<zips.length; i++) {
 		if (zips[i][0] in CONTRACTOR_INFO) {
@@ -53,7 +52,7 @@ function findZipsWithContractors(zips) {
 }
 
 
-function getContractors(zips) {
+function getContractors(zips) { //compiles a list of all contractors in the nearby zips
 	var contractors = [];
 	var cur_zip;
 	var dist;
@@ -69,24 +68,17 @@ function getContractors(zips) {
 	return contractors;
 }
 
-
-function logContractors(contractors) {
-	for (var i=0; i<contractors.length; i++) {
-		console.log([contractors[i][0], contractors[i][1]]);
-	}
-}
-
 	
-function outputResults(zip, contractors) {
+function outputResults(zip, contractors) { //crude, but dynamically generates search result page
 	//define javascript files to load in header
 	document.write("<head>");
 	document.write("<title>Search Results</title>");
-	document.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"css.css\">");
+	document.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"Non-Html/css.css\">");
 	document.write("<script type=\"text/javascript\" src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js\"></script>");
-	document.write("<script type=\"text/javascript\" src=\"jquery.cookie.js\"></script>");
-	document.write("<script type=\"text/javascript\" src=\"contractor_info.js\"></script>");
-	document.write("<script type=\"text/javascript\" src=\"file_saver.js\"></script>");
-	document.write("<script type=\"text/javascript\" src=\"contractor_search.js\"></script>");
+	document.write("<script type=\"text/javascript\" src=\"Non-Html/jquery.cookie.js\"></script>");
+	document.write("<script type=\"text/javascript\" src=\"Non-Html/contractor_info.js\"></script>");
+	document.write("<script type=\"text/javascript\" src=\"Non-Html/file_saver.js\"></script>");
+	document.write("<script type=\"text/javascript\" src=\"Non-Html/contractor_search.js\"></script>");
 	document.write("</head>");
 	//display results
 	document.write("<body>");
@@ -95,10 +87,8 @@ function outputResults(zip, contractors) {
 	document.write("<h5>Note: To save \"last use\" or removal changes, click the \"Save Changes\" button at the bottom of the page. To edit an entry, first make and save any usage or removal changes, save them, and then hit the edit button.</h5>");
 	
 	if (contractors.length == 0) {
-		var expand = confirm("No contractors were found within 35 miles of the selected zip code. Return to home page?");
-		if (expand == true) {
-			window.location.href = "index.html";
-		}
+		alert("No contractors were found within 35 miles of the selected zip code. Returning to homepage...");
+		window.location.href = "index.html";
 	} else {
 		document.write("<ol>");
 		for (var i=0; i<contractors.length; i++) {
@@ -131,7 +121,7 @@ function outputResults(zip, contractors) {
 }
 
 
-function use(name, zip) {
+function use(name, zip) { //updates the date of last use for a contractor when the "Use" button is pressed
 	var entry;
 	for (var key in CONTRACTOR_INFO) {
 		for (var i=0; i<CONTRACTOR_INFO[key].length; i++) {
@@ -155,7 +145,7 @@ function use(name, zip) {
 }
 
 
-function edit(name, zip) {
+function edit(name, zip) { //opens a new page where the selected contractor can be edited, when an "Edit" button is pressed
 	var entry;
 	for (var key in CONTRACTOR_INFO) {
 		for (var i=0; i<CONTRACTOR_INFO[key].length; i++) {
@@ -176,7 +166,7 @@ function edit(name, zip) {
 }
 
 
-function rmEntry(name, zip) {
+function rmEntry(name, zip) { //removes the selected contractor when a "Remove" button is pressed
 	var entry;
 	for (var key in CONTRACTOR_INFO) {
 		for (var i=0; i<CONTRACTOR_INFO[key].length; i++) {

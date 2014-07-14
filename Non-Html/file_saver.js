@@ -3,10 +3,27 @@ function saveUpdates(data) {
 	data = data.concat(";");
 	var front = "var CONTRACTOR_INFO = ";
 	data = front.concat(data);
-	saveTextAsFile(data);
+	
+	//saveTextAsFile(data); //to download to client
+	saveToServer(data); //to update server file directly
 }
 
-//ALL CODE BELOW ADAPTED FROM INTERNET SOURCE
+
+function saveToServer(info) {
+	/*jQuery.post({
+  		url: 'Non-Html/contractor_info2.js',//url of receiver file on server
+  		data: info, //your data
+  		success: function(){alert("Save successful!");}, //callback when ajax request finishes
+  		dataType: 'text'
+	});*/
+	var XML = "contractor_info.txt";
+	var xhr = new XMLHttpRequest();
+	xhr.open( 'post', 'Non-Html/file_save_helper.php', true );
+	xhr.send("D="+info+'&F='+XML);
+}
+
+
+//ALL CODE BELOW ADAPTED FROM http://thiscouldbebetter.wordpress.com/2012/12/18/loading-editing-and-saving-a-text-file-in-html5-using-javascrip/
 function saveTextAsFile(edited_info)
 {
 	var textToWrite = edited_info;

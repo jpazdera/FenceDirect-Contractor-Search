@@ -1,4 +1,4 @@
-function addContractor() {
+function addContractor() { //adds a contractor using the form on the AddContractors.html page
 	//get info from form
 	var name = document.getElementById("name").value;
 	var address = document.getElementById("address").value;
@@ -6,7 +6,7 @@ function addContractor() {
 	var state = document.getElementById("state").value;
 	var zip = document.getElementById("zip").value;
 	var phone = document.getElementById("phone").value;
-	var email = document.getElementByID("email").value;
+	var email = document.getElementById("email").value;
 	var contact = document.getElementById("contact").value;
 	var last = document.getElementById("last").value;
 	if (name == "" || zip == "" || last =="") {
@@ -32,12 +32,12 @@ function addContractor() {
 }
 
 
-function resetForm() { //clears add contractor form each time a contractor is entered
+function resetForm() { //clears the "add contractor" form each time a contractor is entered, so that a new entry can be made
 	document.getElementById("adder").reset();
 }
 
 
-function removeContractor(name, zip) {
+function removeContractor(name, zip) { //finds and removes a contractor based on its name and zip code
 	var entry;
 	for (var key in CONTRACTOR_INFO) {
 		for (var i=0; i<CONTRACTOR_INFO[key].length; i++) {
@@ -54,7 +54,7 @@ function removeContractor(name, zip) {
 }
 
 
-function editSaveAll(total_number) {
+function editSaveAll(total_number) { //saves all edits on the EditContractors2.html page
 	for (var i=0; i<total_number; i++) {
 		editContractor(i);
 	}
@@ -62,7 +62,7 @@ function editSaveAll(total_number) {
 }
 
 
-function editContractor(id) {
+function editContractor(id) { //makes edits to the 
 	//get info from form and construct updated contractor object
 	id = String(id);
 	var name = document.getElementById("name"+id).value;
@@ -85,7 +85,7 @@ function editContractor(id) {
 }
 
 
-function prefillForm(n, z, id) {
+function prefillForm(n, z, id) { //generates and pre-fills edit forms with existing contractor data, while removing the existing data in preparation for the updated entries being input
 	var entry;
 	for (var key in CONTRACTOR_INFO) {
 		for (var i=0; i<CONTRACTOR_INFO[key].length; i++) {

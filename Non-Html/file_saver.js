@@ -12,20 +12,13 @@ function saveUpdates(data) {
 function saveToServer(info) {
 	jQuery.ajax({
 	  type: "POST",
-	  url: "Non-Html/file_save_helper.py",
-	  data: { "text": info},
+	  url: "cgi-bin/file_save_helper.py",
+	  data: {"text": info},
 	  dataType: 'html',
-	  success: function( o ) {
+	  success: function() {
 	  	alert("Save successful!");
 	  }
 	});
-	  
-	/*jQuery.post({
-  		url: 'Non-Html/contractor_info2.js',//url of receiver file on server
-  		data: info, //your data
-  		success: function(){alert("Save successful!");}, //callback when ajax request finishes
-  		dataType: 'text'
-	});*/
 	/*var XML = "Non-Html/contractor_info.js";
 	var xhr = new XMLHttpRequest();
 	xhr.open( 'post', 'Non-Html/file_save_helper.php', true );

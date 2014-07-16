@@ -13,18 +13,19 @@
 	<body>
 		<a href="index.html"><h1>FenceDirect Contractor Search</h1></a>
 		<h2>Add Contractor</h2>
+		<h5>Press "Submit" after each entry to submit and clear the form. Submit each contractor's info, then hit the "Save Changes" button to update the database.<br>New contractors will not be added until "Save Changes" is clicked.</h5>
 		<h3>Enter new contractor info below:</h3>
 		<form id="adder">
-			Company: <input id="name" type="text" name="code" /><br><br>
+			Company*: <input id="name" type="text" name="code" /><br><br>
 			Address: <input id="address" type="text" name="code" /><br><br>
 			City: <input id="city" type="text" name="code" /><br><br>
 			State: <input id="state" type="text" name="code" /><br><br>
-			Zip: <input id="zip" type="text" name="code" /><br><br>
+			Zip*: <input id="zip" type="text" name="code" /><br><br>
 			Phone #: <input id="phone" type="text" name="code" /><br><br>
 			Email: <input id="email" type="text" name="code" /><br><br>
 			Contact: <input id="contact" type="text" name="code" /><br><br>
 			Last Use (Mmm-YY): <input id="last" type="text" name="code" /><br><br>
-			<input type="button" value="Enter" onclick="addContractor();">
+			<input type="button" value="Submit" onclick="addContractor();">
 		</form>
 		<br><br>
 		<div align="center"><a href="#" onclick="saveUpdates(CONTRACTOR_INFO);return false;" class="button">Save Changes</a></div>

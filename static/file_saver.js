@@ -4,15 +4,15 @@ function saveUpdates(data) {
 	var front = "var CONTRACTOR_INFO = ";
 	data = front.concat(data);
 	
-	//saveTextAsFile(data); //to download to client
-	saveToServer(data); //to update server file directly
+	//saveTextAsFile(data); //if run on internal server
+	saveToServer(data); //if accessing remote server
 }
 
 
 function saveToServer(info) {
 	jQuery.ajax({
 	  type: "POST",
-	  url: "cgi-bin/file_save_helper.py",
+	  url: "../ContractorSearch/file_save_helper.py",
 	  data: {"text": info},
 	  dataType: 'html',
 	  success: function() {

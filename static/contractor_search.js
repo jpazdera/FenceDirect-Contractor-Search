@@ -12,7 +12,8 @@ function contractorSearch(zip, radius) { //uses API to get a list of zip codes n
 			outputResults(zip, contractors);
 		} else {
 			alert("ERROR: Invalid zip code.");
-			window.location.href = "index.html";
+			location.reload();
+			//window.location.href = "index.html";
 		}
 	});
 	return;
@@ -73,12 +74,12 @@ function outputResults(zip, contractors) { //crude, but dynamically generates se
 	//define javascript files to load in header
 	document.write("<head>");
 	document.write("<title>Search Results</title>");
-	document.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"Non-Html/css.css\">");
+	document.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"../static/css.css\">");
 	document.write("<script type=\"text/javascript\" src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js\"></script>");
-	document.write("<script type=\"text/javascript\" src=\"Non-Html/jquery.cookie.js\"></script>");
-	document.write("<script type=\"text/javascript\" src=\"Non-Html/contractor_info.js\"></script>");
-	document.write("<script type=\"text/javascript\" src=\"Non-Html/file_saver.js\"></script>");
-	document.write("<script type=\"text/javascript\" src=\"Non-Html/contractor_search.js\"></script>");
+	document.write("<script type=\"text/javascript\" src=\"../static/jquery.cookie.js\"></script>");
+	document.write("<script type=\"text/javascript\" src=\"../static/contractor_info.js\"></script>");
+	document.write("<script type=\"text/javascript\" src=\"../static/file_saver.js\"></script>");
+	document.write("<script type=\"text/javascript\" src=\"../static/contractor_search.js\"></script>");
 	document.write("</head>");
 	//display results
 	document.write("<body>");
@@ -88,7 +89,7 @@ function outputResults(zip, contractors) { //crude, but dynamically generates se
 	
 	if (contractors.length == 0) {
 		alert("No contractors were found within 35 miles of the selected zip code. Returning to homepage...");
-		window.location.href = "index.html";
+		window.location.href = "templates/index.html";
 	} else {
 		document.write("<ol>");
 		for (var i=0; i<contractors.length; i++) {
@@ -157,7 +158,7 @@ function edit(name, zip) { //opens a new page where the selected contractor can 
 					cookie = cookie.concat("@@");
 					cookie = cookie.concat(entry["Zip"]);
 					jQuery.cookie("toEdit", cookie);
-					window.open("EditContractors2.html");
+					window.open("templates/EditContractors2.html");
 				}
 				break;
 			}

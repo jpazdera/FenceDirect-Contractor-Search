@@ -83,7 +83,7 @@ function outputResults(zip, contractors) { //crude, but dynamically generates se
 	document.write("</head>");
 	//display results
 	document.write("<body>");
-	document.write("<a href=\"index.html\"><h1>FenceDirect Contractor Search</h1></a>");
+	document.write("<a href=\"index\"><h1>FenceDirect Contractor Search</h1></a>");
 	document.write("<h2>" + contractors.length + " Contractors Found Near <span style=\"color:DarkRed\">"+zip+"</span>:</h2>");
 	document.write("<h5>Note: To save \"last use\" or removal changes, click the \"Save Changes\" button at the bottom of the page. To edit an entry, first make and save any usage or removal changes, save them, and then hit the edit button.</h5>");
 	

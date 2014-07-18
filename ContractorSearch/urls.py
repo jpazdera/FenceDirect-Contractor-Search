@@ -5,9 +5,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
     url(r'^$', TemplateView.as_view(template_name="index.html")),
-    # url(r'^blog/', include('blog.urls')),
+    url(r'^ContractorSearch.html$', TemplateView.as_view(template_name="ContractorSearch.html")),
 
     url(r'^admin/', include(admin.site.urls)),
 )

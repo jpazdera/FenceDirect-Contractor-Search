@@ -28,7 +28,7 @@ ALLOWED_HOSTS = ['fencedirectcontractorsearch.cf','165.82.80.243']
 
 TEMPLATE_DIRS = ("template",)
 
-STATICFILES_DIR = ("static",)
+STATICFILES_DIRS = ("static",)
 
 # Application definition
 

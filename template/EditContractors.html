@@ -11,7 +11,7 @@
 		<script type="text/javascript" src="../static/list_contractors.js"></script>
 	</head>
 	<body>
-		<a href="index.html"><h1>FenceDirect Contractor Search</h1></a>
+		<a href="index"><h1>FenceDirect Contractor Search</h1></a>
 		<h2>Edit Contractors</h2>
 		<h5>Note: You can press Ctrl + F to quckly search for the desired entry or entries.</h5>
 		<h3>Select which contractor(s) to edit:</h3>
@@ -31,7 +31,7 @@
     			var response_array = inputsToArray(contractors.children);
     			response_array = response_array.join('**');
     			jQuery.cookie('toEdit', response_array);
-    			location.replace('EditContractors2.html');
+    			location.replace('EditContractors2');
 			};
 		</script>
 	</body>

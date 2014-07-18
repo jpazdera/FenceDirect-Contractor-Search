@@ -13,7 +13,7 @@ function contractorSearch(zip, radius) { //uses API to get a list of zip codes n
 		} else {
 			alert("ERROR: Invalid zip code.");
 			location.reload();
-			//window.location.href = "index.html";
+			//window.location.href = "index";
 		}
 	});
 	return;
@@ -89,7 +89,7 @@ function outputResults(zip, contractors) { //crude, but dynamically generates se
 	
 	if (contractors.length == 0) {
 		alert("No contractors were found within 35 miles of the selected zip code. Returning to homepage...");
-		window.location.href = "templates/index.html";
+		window.location.href = "index";
 	} else {
 		document.write("<ol>");
 		for (var i=0; i<contractors.length; i++) {
@@ -158,7 +158,7 @@ function edit(name, zip) { //opens a new page where the selected contractor can 
 					cookie = cookie.concat("@@");
 					cookie = cookie.concat(entry["Zip"]);
 					jQuery.cookie("toEdit", cookie);
-					window.open("templates/EditContractors2.html");
+					window.open("EditContractors2");
 				}
 				break;
 			}

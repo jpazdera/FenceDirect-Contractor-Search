@@ -12,17 +12,13 @@ function saveUpdates(data) {
 function saveToServer(info) {
 	jQuery.ajax({
 	  type: "POST",
-	  url: "../ContractorSearch/file_save_helper.py",
+	  url: "overwrite_data",
 	  data: {"text": info},
-	  dataType: 'html',
+	  dataType: 'text',
 	  success: function() {
 	  	alert("Save successful!");
 	  }
 	});
-	/*var XML = "Non-Html/contractor_info.js";
-	var xhr = new XMLHttpRequest();
-	xhr.open( 'post', 'Non-Html/file_save_helper.php', true );
-	xhr.send("D="+info+'&F='+XML);*/
 }
 
 

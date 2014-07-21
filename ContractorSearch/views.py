@@ -9,6 +9,6 @@ def overwrite_data(request):
         data = request.POST.get('text', '')
     if data != '':
         file = open('../static/contractor_info2.js', 'w')
-        file.write(d)
+        file.write(data)
         file.close
     return render(request, 'index.html')

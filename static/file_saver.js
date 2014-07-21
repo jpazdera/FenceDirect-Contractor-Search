@@ -14,7 +14,7 @@ function saveToServer(info) {
 	  type: "POST",
 	  url: "overwrite_data",
 	  data: {"text": info},
-	  dataType: 'text',
+	  dataType: "text",
 	  success: function() {
 	  	alert("Save successful!");
 	  }

@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     url(r'^EditContractors2$', TemplateView.as_view(template_name="EditContractors2.html")),
     url(r'^RemoveContractors$', TemplateView.as_view(template_name="RemoveContractors.html")),
     url(r'^AutoClean$', TemplateView.as_view(template_name="AutoClean.html")),
-    url(r'^overwrite_data$', ContractorSearch.views.overwrite_data),
+    url(r'^overwrite_data$', core.views.overwrite_data, name="overwrite_data"),
 
     url(r'^admin/', include(admin.site.urls)),
 )

@@ -9,8 +9,7 @@ function addContractor() { //adds a contractor using the form on the AddContract
 	var email = document.getElementById("email").value;
 	var contact = document.getElementById("contact").value;
 	var last = document.getElementById("last").value;
-	var contractor = {"Town":city,"Name":name,"Zip":zip,"Last Use":last,"Phone":phone,"State":state,"Contact":contact,"Address":address};
-		
+	
 	//if invalid input, do not enter contractor
 	var a = validateEntry(name, zip, last);
 	var cont = a[0];
@@ -18,6 +17,8 @@ function addContractor() { //adds a contractor using the form on the AddContract
 	if (!cont) { 
 		return;
 	}
+
+	var contractor = {"Town":city,"Name":name,"Zip":zip,"Last Use":last,"Phone":phone,"State":state,"Contact":contact,"Address":address, "Email":email};
 
 	//update database
 	cont = avoidDuplicatesAdd(zip, contractor);
@@ -28,7 +29,6 @@ function addContractor() { //adds a contractor using the form on the AddContract
 	
 	//Only to be used with save_to_server saving method
 	saveUpdates(CONTRACTOR_INFO);
-	location.reload();
 }
 
 
@@ -74,7 +74,6 @@ function editContractor(id) { //makes edits to the
 	var email = document.getElementById("email"+id).value;
 	var contact = document.getElementById("contact"+id).value;
 	var last = document.getElementById("last"+id).value;
-	var contractor = {"Town":city,"Name":name,"Zip":zip,"Last Use":last,"Phone":phone,"State":state,"Contact":contact,"Address":address,"Email":email};
 	
 	//if invalid input, do not save updated info
 	var a = validateEntry(name, zip, last);
@@ -83,6 +82,8 @@ function editContractor(id) { //makes edits to the
 	if (!cont) { 
 		return;
 	}
+	
+	var contractor = {"Town":city,"Name":name,"Zip":zip,"Last Use":last,"Phone":phone,"State":state,"Contact":contact,"Address":address,"Email":email};
 	
 	//insert updated contractor where appropriate
 	avoidDuplicatesAdd (zip, contractor);

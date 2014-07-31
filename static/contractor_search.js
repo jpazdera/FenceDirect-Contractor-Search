@@ -31,7 +31,6 @@ function trimResponse(data) { //extracts JSON data from the response
 
 function extractZips(obj, zip) { //converts the JSON data into an array of (zip, distance) tuples
 	var l = obj["zip_codes"];
-	var zips = [[zip, 0]]; //add the customer's zip code to the list, as the API does not include it
 	var entry;
 	for (var i=0; i< l.length; i++) {
 		entry = [l[i]["zip_code"], l[i]["distance"]];

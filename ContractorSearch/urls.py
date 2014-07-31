@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
+from ContractorSearch import views
 
 from django.contrib import admin
 admin.autodiscover()
@@ -13,7 +14,7 @@ urlpatterns = patterns('',
     url(r'^EditContractors2$', TemplateView.as_view(template_name="EditContractors2.html")),
     url(r'^RemoveContractors$', TemplateView.as_view(template_name="RemoveContractors.html")),
     url(r'^AutoClean$', TemplateView.as_view(template_name="AutoClean.html")),
-    url(r'^overwrite_data$', overwrite_data),
+    url(r'^overwrite_data$', views.overwrite_data, name="overwrite_data"),
 
     url(r'^admin/', include(admin.site.urls)),
 )

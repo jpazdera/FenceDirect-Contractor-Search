@@ -5,8 +5,10 @@
 		<meta content="utf-8" http-equiv="encoding">
 		<title>FenceDirect Contractor Search</title>
 		<link rel="stylesheet" type="text/css" href="../static/css.css">
+		<script type="text/javascript" src="../static/contractor_info.js"></script>
+		<script type="text/javascript" href="../static/auto_clean.js"></script>
 	</head>
-	<body>
+	<body onload="autoClean();">
 		<a href="index"><h1>FenceDirect Contractor Search</h1></a>
 		<h2>Press a button to begin:</h2>
 		<div style="text-align:center; padding-top:30px; padding-bottom:55px;"><a href="ContractorSearch" class="button main">Contractor Search</a></div>
@@ -15,7 +17,7 @@
 				<td><a href="AddContractor" class="button">Add Contractors</a></td>
 				<td><a href="EditContractors" class="button">Edit Contractors</a></td>
 				<td><a href="RemoveContractors" class="button">Remove Contractors</a></td>
-				<td><a href="AutoClean" class="button">Clear Old Entries</a></td>
+				<!--<td><a href="AutoClean" class="button">Clear Old Entries</a></td>-->
 			</tr>
 		</table>
 		<script type="text/javascript">

@@ -20,9 +20,15 @@ function addContractor() { //adds a contractor using the form on the AddContract
 	}
 
 	//update database
-	avoidDuplicatesAdd (zip, contractor);
-	
+	cont = avoidDuplicatesAdd(zip, contractor);
+	if (!cont) { //don't reset the form or update the database if entry is a duplicate
+		return;
+	}
 	resetForm();
+	
+	//Only to be used with save_to_server saving method
+	saveUpdates(CONTRACTOR_INFO);
+	location.reload();
 }
 
 
@@ -146,11 +152,12 @@ function avoidDuplicatesAdd (zip, contractor) { //prevent the addition of duplic
 		for (var i=0; i<CONTRACTOR_INFO[zip].length; i++) {
 			if (CONTRACTOR_INFO[zip][i]["Name"] == contractor["Name"]) {
 				alert("Error: Contractor \""+contractor["Name"]+"\" already present in database. Duplicates cannot be added.");
-				return;
+				return false;
 			}
 		}
 		CONTRACTOR_INFO[zip].push(contractor);
 	} else {
 		CONTRACTOR_INFO[zip] = [contractor];
 	}
+	return true;
 }

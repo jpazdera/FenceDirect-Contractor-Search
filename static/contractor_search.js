@@ -115,7 +115,7 @@ function outputResults(zip, contractors) { //crude, but dynamically generates se
 			document.write("</li><br>");
 		}
 		document.write("</ol>");
-		document.write('<div style="text-align:center;"><a href="ContractorSearch.html" class="button">New Search</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="saveUpdates(CONTRACTOR_INFO);return false;" class="button">Save Changes</a></div>');
+		document.write('<div style="text-align:center;"><a href="ContractorSearch" class="button">New Search</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="saveUpdates(CONTRACTOR_INFO);return false;" class="button">Save Changes</a></div>');
 	}	
 	document.write("</body>");
 	return;

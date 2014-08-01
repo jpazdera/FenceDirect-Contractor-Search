@@ -85,7 +85,7 @@ function outputResults(zip, contractors) { //crude, but dynamically generates se
 	document.write("<body>");
 	document.write("<a href=\"index\"><h1>FenceDirect Contractor Search</h1></a>");
 	document.write("<h2>" + contractors.length + " Contractors Found Near <span style=\"color:DarkRed\">"+zip+"</span>:</h2>");
-	document.write("<h5>Note: To save \"last use\" or removal changes, click the \"Save Changes\" button at the bottom of the page. To edit an entry, first make and save any usage or removal changes, save them, and then hit the edit button.</h5>");
+	document.write("<h5>Note: Make all usage or removal changes before editing entries.</h5>");
 	
 	if (contractors.length == 0) {
 		alert("No contractors were found within 35 miles of the selected zip code. Returning to homepage...");
@@ -115,7 +115,7 @@ function outputResults(zip, contractors) { //crude, but dynamically generates se
 			document.write("</li><br>");
 		}
 		document.write("</ol>");
-		document.write('<div style="text-align:center;"><a href="ContractorSearch" class="button">New Search</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="saveUpdates(CONTRACTOR_INFO);return false;" class="button">Save Changes</a></div>');
+		document.write('<div style="text-align:center;"><a href="ContractorSearch" class="button">New Search</a></div>');
 	}	
 	document.write("</body>");
 	return;
@@ -139,6 +139,7 @@ function use(name, zip) { //updates the date of last use for a contractor when t
 				
 				CONTRACTOR_INFO[key][i]["Last Use"] = new_date;
 				alert("Last use updated to " + new_date + ".");
+				saveUpdates(CONTRACTOR_INFO);
 				break;
 			}
 		}
@@ -175,6 +176,7 @@ function rmEntry(name, zip) { //removes the selected contractor when a "Remove" 
 			if (entry["Name"]==name && entry["Zip"]==zip) {
 				CONTRACTOR_INFO[key].splice(i,1);
 				alert("Contractor removed successfully.");
+				saveUpdates(CONTRACTOR_INFO);
 				break;
 			}
 		}

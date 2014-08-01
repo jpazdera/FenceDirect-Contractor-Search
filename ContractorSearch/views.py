@@ -1,8 +1,6 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-
-def myView(request):
-    return HttpResponse("All set!")
+import uwsgi
 
 @csrf_exempt
 def overwrite_data(request):
@@ -13,4 +11,5 @@ def overwrite_data(request):
         file = open('static/contractor_info.js', 'w')
         file.write(data)
         file.close
+        uwsgi.reload()
     return HttpResponse('')

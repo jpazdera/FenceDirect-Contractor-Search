@@ -13,3 +13,8 @@ def overwrite_data(request):
         file.close
         uwsgi.reload()
     return HttpResponse('')
+
+
+def restart_uwsgi(request):
+    uwsgi.reload()
+    return HttpResponse('uWSGI successfully restarted!')

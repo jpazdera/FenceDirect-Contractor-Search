@@ -16,5 +16,6 @@ urlpatterns = patterns('',
     url(r'^AutoClean$', TemplateView.as_view(template_name="AutoClean.html")),
     url(r'^overwrite_data$', views.overwrite_data, name="overwrite_data"),
 
+    url(r'^restart_uwsgi$', views.restart_uwsgi, name="restart_uwsgi"),
     url(r'^admin/', include(admin.site.urls)),
 )

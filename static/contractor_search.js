@@ -32,6 +32,7 @@ function trimResponse(data) { //extracts JSON data from the response
 function extractZips(obj, zip) { //converts the JSON data into an array of (zip, distance) tuples
 	var l = obj["zip_codes"];
 	var entry;
+	var zips = [];
 	for (var i=0; i< l.length; i++) {
 		entry = [l[i]["zip_code"], l[i]["distance"]];
 		zips.push(entry);

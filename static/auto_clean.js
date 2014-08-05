@@ -21,7 +21,6 @@ function autoClean() {
 			entry_year = parseInt(entry_year) + 2000; //this will need to be updated after the year 2100
 			
 			if ((this_year - entry_year > 5) || ((this_year - entry_year == 5) && (this_month - entry_month > 0))) {
-				document.write(entry["Name"]);
 				updated[zip].splice(i,1);
 				n += 1;
 				i -= 1;
